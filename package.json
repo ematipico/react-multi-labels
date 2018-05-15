@@ -1,0 +1,40 @@
+{
+  "name": "react-multi-labels",
+  "version": "0.1.0",
+  "description": "Provide static labels to your application, whichever language you want",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ematipico/react-multi-labels.git"
+  },
+  "keywords": [
+    "react",
+    "labels",
+    "multilanguage"
+  ],
+  "author": "Emanuele Stoppa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ematipico/react-multi-labels/issues"
+  },
+  "homepage": "https://github.com/ematipico/react-multi-labels#readme",
+  "peerDependencies": {
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.47",
+    "@babel/preset-env": "^7.0.0-beta.47",
+    "@babel/preset-react": "^7.0.0-beta.47",
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "jest": "^22.4.3",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-testing-library": "^3.0.2",
+    "rollup": "^0.59.0"
+  }
+}
