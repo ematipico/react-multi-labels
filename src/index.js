@@ -71,7 +71,7 @@ export const GetLabel = ({ text, children }) => {
   return (
     <Consumer>
       {({ language, labels }) => {
-        return children({ label: labels[language][text] });
+        return children(labels[language][text]);
       }}
     </Consumer>
   );
