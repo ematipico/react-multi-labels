@@ -1,6 +1,5 @@
-// WIP
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from "prop-types";
+import React from "react";
 
 const isDevelop = process.env.NODE_ENV;
 // eslint-disable-next-line no-unused-vars
@@ -9,9 +8,9 @@ const { Provider, Consumer } = React.createContext();
 export class LabelsProvider extends React.Component {
   constructor(props) {
     super(props);
-    const { language, labels} = props;
+    const { language, labels } = props;
     this.changeLanguage = this.changeLanguage.bind(this);
-    this.changeLabels = this.changeLabels.bind(this);    
+    this.changeLabels = this.changeLabels.bind(this);
     this.state = {
       language: language,
       labels: labels,
@@ -20,13 +19,12 @@ export class LabelsProvider extends React.Component {
     };
     if (isDevelop) {
       if (!labels[language]) {
-        console.warn('Careful! There is no object for the language that you just set!');
-      }  
+        console.warn("Careful! There is no object for the language that you just set!");
+      }
     }
-    
   }
 
-  changeLanguage (language) {
+  changeLanguage(language) {
     this.setState({
       language
     });
@@ -37,13 +35,9 @@ export class LabelsProvider extends React.Component {
       labels
     });
   }
-  
+
   render() {
-    return (
-      <Provider value={this.state}>
-        {this.props.children}
-      </Provider>
-    );
+    return <Provider value={this.state}>{this.props.children}</Provider>;
   }
 }
 
@@ -79,7 +73,7 @@ export const GetLabel = ({ text, children }) => {
 
 GetLabel.propTypes = {
   text: PropTypes.string.isRequired,
-  children: PropTypes.object
+  children: PropTypes.func
 };
 
 export const GetLabels = ({ list, children }) => {
@@ -98,7 +92,7 @@ export const GetLabels = ({ list, children }) => {
 
 GetLabels.propTypes = {
   list: PropTypes.array.isRequired,
-  children: PropTypes.object
+  children: PropTypes.func
 };
 
 export const ChangeLanguage = ({ children }) => {
@@ -112,7 +106,7 @@ export const ChangeLanguage = ({ children }) => {
 };
 
 ChangeLanguage.propTypes = {
-  children: PropTypes.object
+  children: PropTypes.func
 };
 
 export const ChangeLabels = ({ children }) => {
@@ -126,6 +120,5 @@ export const ChangeLabels = ({ children }) => {
 };
 
 ChangeLabels.propTypes = {
-  children: PropTypes.object
+  children: PropTypes.func
 };
-
