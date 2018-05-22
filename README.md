@@ -123,7 +123,7 @@ import React from 'react'
 function Form () {
     return (
         <GetLabels list={['REMOVE', 'CHANGE']}>
-            {(REMOVE) => {
+            {({ REMOVE, CHANGE }) => {
                 return ( 
                     <React.Fragment>
                         <Button buttonLabel={REMOVE} />
