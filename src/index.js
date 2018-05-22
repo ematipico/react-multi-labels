@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import React from "react";
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const isDevelop = process.env.NODE_ENV;
 // eslint-disable-next-line no-unused-vars
@@ -19,7 +19,7 @@ export class LabelsProvider extends React.Component {
     };
     if (isDevelop) {
       if (!labels[language]) {
-        console.warn("Careful! There is no object for the language that you just set!");
+        console.warn('Careful! There is no object for the language that you just set!');
       }
     }
   }

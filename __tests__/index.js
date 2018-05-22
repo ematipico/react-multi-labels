@@ -1,35 +1,42 @@
-import React from "react";
-import { render, Simulate } from "react-testing-library";
-import { Label, LabelsProvider, GetLabel, GetLabels, ChangeLabels } from "../src/index";
+import React from 'react';
+import { Simulate, render } from 'react-testing-library';
+import {
+  ChangeLabels,
+  ChangeLanguage,
+  GetLabel,
+  GetLabels,
+  Label,
+  LabelsProvider
+} from '../src/index';
 
 const LABELS = {
   en_GB: {
-    APPOINTMENTS: "Appointments",
-    SIGN_IN: "Sign In",
-    LOGIN: "Login",
-    EMAIL: "Email"
+    APPOINTMENTS: 'Appointments',
+    SIGN_IN: 'Sign In',
+    LOGIN: 'Login',
+    EMAIL: 'Email'
   },
   it_IT: {
-    APPOINTMENTS: "Appointments",
-    SIGN_IN: "Sign In",
-    LOGIN: "Login",
-    EMAIL: "Email"
+    APPOINTMENTS: 'Appointments',
+    SIGN_IN: 'Sign In',
+    LOGIN: 'Autenticazione',
+    EMAIL: 'Email'
   }
 };
 
-describe("Labels package", () => {
-  describe("Label", () => {
-    it("should render nothing if labels does not exist", () => {
+describe('Labels package', () => {
+  describe('Label', () => {
+    it('should render nothing if labels does not exist', () => {
       const { queryByText } = render(
         <LabelsProvider language="en_GB" labels={LABELS}>
           <Label text="LOGIN_FAKE" />
         </LabelsProvider>
       );
 
-      expect(queryByText("Login")).toBeNull();
+      expect(queryByText('Login')).toBeNull();
     });
 
-    it("should render nothing if labels does not exist", () => {
+    it('should render nothing if labels does not exist', () => {
       const { getByText } = render(
         <LabelsProvider language="en_GB" labels={LABELS}>
           <div>
@@ -40,15 +47,15 @@ describe("Labels package", () => {
         </LabelsProvider>
       );
 
-      expect(getByText("Login")).toBeDefined();
+      expect(getByText('Login')).toBeDefined();
     });
   });
 
-  describe("GetLabel", () => {
-    it("should render nothing if labels does not exist", () => {
+  describe('GetLabel', () => {
+    it('should render nothing if labels does not exist', () => {
       const { queryByText } = render(
         <LabelsProvider language="en_GB" labels={LABELS}>
-          <GetLabel text={"NOTHING"}>
+          <GetLabel text={'NOTHING'}>
             {label => {
               return <p>{label}</p>;
             }}
@@ -56,13 +63,13 @@ describe("Labels package", () => {
         </LabelsProvider>
       );
 
-      expect(queryByText("Nothing")).toBeNull();
+      expect(queryByText('Nothing')).toBeNull();
     });
 
-    it("should render nothing if labels does not exist", () => {
+    it('should render nothing if labels does not exist', () => {
       const { getByText } = render(
         <LabelsProvider language="en_GB" labels={LABELS}>
-          <GetLabel text={"LOGIN"}>
+          <GetLabel text={'LOGIN'}>
             {label => {
               return <p>{label}</p>;
             }}
@@ -70,15 +77,15 @@ describe("Labels package", () => {
         </LabelsProvider>
       );
 
-      expect(getByText("Login")).toBeDefined();
+      expect(getByText('Login')).toBeDefined();
     });
   });
 
-  describe("GetLabels", () => {
-    it("should render nothing if labels does not exist", () => {
+  describe('GetLabels', () => {
+    it('should render nothing if labels does not exist', () => {
       const { queryByText } = render(
         <LabelsProvider language="en_GB" labels={LABELS}>
-          <GetLabels list={["NOTHING", "FAKE"]}>
+          <GetLabels list={['NOTHING', 'FAKE']}>
             {({ NOTHING, FAKE }) => {
               return (
                 <p>
@@ -90,13 +97,13 @@ describe("Labels package", () => {
         </LabelsProvider>
       );
 
-      expect(queryByText("Nothing - Fake")).toBeNull();
+      expect(queryByText('Nothing - Fake')).toBeNull();
     });
 
-    it("should render nothing if labels does not exist", () => {
+    it('should render nothing if labels does not exist', () => {
       const { getByText } = render(
         <LabelsProvider language="en_GB" labels={LABELS}>
-          <GetLabels list={["LOGIN", "EMAIL"]}>
+          <GetLabels list={['LOGIN', 'EMAIL']}>
             {({ LOGIN, EMAIL }) => {
               return (
                 <p>
@@ -108,41 +115,73 @@ describe("Labels package", () => {
         </LabelsProvider>
       );
 
-      expect(getByText("Login - Email")).toBeDefined();
+      expect(getByText('Login - Email')).toBeDefined();
     });
   });
-});
+  describe('ChangeLabels', () => {
+    it('should change with the new labels provided', () => {
+      const newLabels = {
+        en_GB: {
+          LOGIN: 'Shiny login',
+          EMAIL: 'Dark email'
+        }
+      };
 
-describe("ChangeLabels", () => {
-  it("should change with the new labels provided", () => {
-    const newLabels = {
-      en_GB: {
-        LOGIN: "Shiny login",
-        EMAIL: "Dark email"
-      }
-    };
+      const { getByText, queryByText } = render(
+        <LabelsProvider language="en_GB" labels={LABELS}>
+          <React.Fragment>
+            <GetLabels list={['LOGIN', 'EMAIL']}>
+              {({ LOGIN, EMAIL }) => {
+                return (
+                  <p>
+                    {LOGIN} - {EMAIL}
+                  </p>
+                );
+              }}
+            </GetLabels>
+            <ChangeLabels>
+              {({ changeLabels }) => {
+                return (
+                  <button onClick={() => changeLabels(newLabels)}>
+                    Click me!
+                  </button>
+                );
+              }}
+            </ChangeLabels>
+          </React.Fragment>
+        </LabelsProvider>
+      );
+      Simulate.click(getByText('Click me!'));
+      expect(queryByText('Shiny Login - Dark email')).toBeDefined();
+    });
+  });
 
-    const { getByText, queryByText } = render(
-      <LabelsProvider language="en_GB" labels={LABELS}>
-        <React.Fragment>
-          <GetLabels list={["LOGIN", "EMAIL"]}>
+  describe('ChangeLanguage', () => {
+    it('should change the language', () => {
+      const { getByText, queryByText } = render(
+        <LabelsProvider language="en_GB" labels={LABELS}>
+          <GetLabels list={['LOGIN', 'EMAIL']}>
             {({ LOGIN, EMAIL }) => {
               return (
                 <p>
+                  <ChangeLanguage>
+                    {({ changeLanguage }) => {
+                      return (
+                        <button onClick={() => changeLanguage('it_IT')}>
+                          Change
+                        </button>
+                      );
+                    }}
+                  </ChangeLanguage>
                   {LOGIN} - {EMAIL}
                 </p>
               );
             }}
           </GetLabels>
-          <ChangeLabels>
-            {({ changeLabels }) => {
-              return <button onClick={() => changeLabels(newLabels)}>Click me!</button>;
-            }}
-          </ChangeLabels>
-        </React.Fragment>
-      </LabelsProvider>
-    );
-    Simulate.click(getByText("Click me!"));
-    expect(queryByText("Shiny Login - Dark email")).toBeDefined();
+        </LabelsProvider>
+      );
+      Simulate.click(getByText('Change'));
+      expect(queryByText('Autenticazione - Email')).toBeDefined();
+    });
   });
 });
