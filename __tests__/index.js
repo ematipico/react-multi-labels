@@ -1,6 +1,6 @@
 import React from "react";
-import { render } from "react-testing-library";
-import { Label, LabelsProvider, GetLabel, GetLabels } from "../src/index";
+import { render, Simulate } from "react-testing-library";
+import { Label, LabelsProvider, GetLabel, GetLabels, ChangeLabels } from "../src/index";
 
 const LABELS = {
   en_GB: {
@@ -110,5 +110,39 @@ describe("Labels package", () => {
 
       expect(getByText("Login - Email")).toBeDefined();
     });
+  });
+});
+
+describe("ChangeLabels", () => {
+  it("should change with the new labels provided", () => {
+    const newLabels = {
+      en_GB: {
+        LOGIN: "Shiny login",
+        EMAIL: "Dark email"
+      }
+    };
+
+    const { getByText, queryByText } = render(
+      <LabelsProvider language="en_GB" labels={LABELS}>
+        <React.Fragment>
+          <GetLabels list={["LOGIN", "EMAIL"]}>
+            {({ LOGIN, EMAIL }) => {
+              return (
+                <p>
+                  {LOGIN} - {EMAIL}
+                </p>
+              );
+            }}
+          </GetLabels>
+          <ChangeLabels>
+            {({ changeLabels }) => {
+              return <button onClick={() => changeLabels(newLabels)}>Click me!</button>;
+            }}
+          </ChangeLabels>
+        </React.Fragment>
+      </LabelsProvider>
+    );
+    Simulate.click(getByText("Click me!"));
+    expect(queryByText("Shiny Login - Dark email")).toBeDefined();
   });
 });
