@@ -1,3 +1,3 @@
 moduel.exports = {
-  setupFiles: ['./__tests__/setup.js]
+  setupFiles: ['./__tests__/setup.js']
 }
