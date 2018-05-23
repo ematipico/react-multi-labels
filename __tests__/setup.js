@@ -1,5 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-globals.React = React;
-globals.PropTypes = PropTypes;
+global.React = React;
+global.PropTypes = PropTypes;
