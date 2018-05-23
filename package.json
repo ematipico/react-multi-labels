@@ -1,12 +1,16 @@
 {
   "name": "@ematipico/react-multi-labels",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Provide static labels to your application, whichever language you want",
-  "main": "es/index.js",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "jsnext:main": "dist/es/index.js",
   "scripts": {
     "test": "jest test",
-    "build:es": "cross-env BABEL_ENV=es NODE_ENV=production rollup -c -o es/react-multi-labels.js",
-    "build": "npm build && auto-changelog -p && git add CHANGELOG.md"
+    "build:commonjs": "cross-env BABEL_ENV=commonjs NODE_ENV=commonjs babel src --out-dir dist/commonjs",
+    "build:es": "cross-env BABEL_ENV=es NODE_ENV=es babel src --out-dir dist/es",
+    "build:umd": "cross-env BABEL_ENV=umd NODE_ENV=umd rollup -c",
+    "build": "npm build:umd && npm build:es && npm build:commonjs && auto-changelog -p && git add CHANGELOG.md"
   },
   "repository": {
     "type": "git",
@@ -24,6 +28,7 @@
     "react-dom": "^16.3.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.47",
     "@babel/core": "^7.0.0-beta.47",
     "@babel/plugin-external-helpers": "^7.0.0-beta.47",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.47",
@@ -32,6 +37,8 @@
     "auto-changelog": "^1.7.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.2.3",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
     "cross-env": "^5.1.5",
     "eslint": "^4.19.1",
     "eslint-plugin-babel": "^5.1.0",

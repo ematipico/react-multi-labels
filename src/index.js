@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+import React from 'react';
+
 const isDevelop = process.env.NODE_ENV;
 // eslint-disable-next-line no-unused-vars
 const { Provider, Consumer } = React.createContext();

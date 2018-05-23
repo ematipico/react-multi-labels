@@ -2,12 +2,18 @@ import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import replace from 'rollup-plugin-replace';
+import { uglify } from 'rollup-plugin-uglify';
+
 export default {
   input: 'src/index.js',
   output: {
-    format: 'es',
-    file: 'react-multi-labels.min',
-    name: 'react-multi-labels.min'
+    file: 'dist/umd/react-multi-labels.js',
+    format: 'umd',
+    name: 'ReactMultiLabels',
+    globals: {
+      react: 'React',
+      'react-dom': 'ReactDOM'
+    }
   },
   external: ['react', 'prop-types'],
   plugins: [
@@ -22,17 +28,18 @@ export default {
       // runtimeHelpers: true,
       // externalHelpers: true
     }),
-    commonjs(),
+    commonjs({
+      include: 'node_modules/**'
+    }),
     replace({
       'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    uglify({
+      mangle: true,
+      output: {
+        comments: true,
+        beautify: true
+      }
     })
-    // uglify({
-    //   compress: {
-    //     pure_getters: true,
-    //     unsafe: true,
-    //     unsafe_comps: true,
-    //     warnings: false
-    //   }
-    // })
   ]
 };

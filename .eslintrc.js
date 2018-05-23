@@ -25,6 +25,5 @@ module.exports = {
     semi: ['error', 'always'],
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'react/prop-types': [1]
-  },
-  globals: { React: true, PropTypes: true }
+  }
 };
