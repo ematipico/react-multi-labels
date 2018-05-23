@@ -1,13 +1,12 @@
 {
   "name": "@ematipico/react-multi-labels",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Provide static labels to your application, whichever language you want",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "jest test",
     "build:es": "cross-env BABEL_ENV=es NODE_ENV=production rollup -c -o es/react-multi-labels.js",
-    "build": "npm run build:es",
-    "publish": "npm build && auto-changelog -p && git add CHANGELOG.md"
+    "build": "npm build && auto-changelog -p && git add CHANGELOG.md"
   },
   "repository": {
     "type": "git",
