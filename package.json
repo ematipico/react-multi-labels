@@ -1,6 +1,6 @@
 {
   "name": "@ematipico/react-multi-labels",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Provide static labels to your application, whichever language you want",
   "main": "index.js",
   "scripts": {
