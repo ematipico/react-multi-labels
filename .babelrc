@@ -1,12 +1,16 @@
 {
-  "presets": [
-    "@babel/preset-react",
-    [
-      "@babel/preset-env",
-      {
-        "modules": false
-      }
-    ]
-  ],
-  "plugins": ["@babel/plugin-external-helpers"]
+  "presets": ["@babel/preset-react", "@babel/preset-env"],
+  "env": {
+    "es": {
+      "presets": [
+        "@babel/preset-react",
+        [
+          "@babel/preset-env",
+          {
+            "modules": false
+          }
+        ]
+      ]
+    }
+  }
 }
