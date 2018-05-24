@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/ematipico/react-multi-labels.svg?branch=master)](https://travis-ci.org/ematipico/react-multi-labels)
 [![devDependencies Status](https://david-dm.org/ematipico/react-multi-labels/dev-status.svg)](https://david-dm.org/ematipico/react-multi-labels?type=dev)
 [![Coverage Status](https://coveralls.io/repos/github/ematipico/react-multi-labels/badge.svg)](https://coveralls.io/github/ematipico/react-multi-labels)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fematipico%2Freact-multi-labels.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fematipico%2Freact-multi-labels?ref=badge_shield)
 
 Provide static labels to your application, whichever language you want
 
@@ -149,3 +150,7 @@ function Form() {
 ```
 
 ### ChangeLabels
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fematipico%2Freact-multi-labels.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fematipico%2Freact-multi-labels?ref=badge_large)
