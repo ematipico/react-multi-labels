@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ematipico/react-multi-labels.svg?branch=master)](https://travis-ci.org/ematipico/react-multi-labels)
 [![devDependencies Status](https://david-dm.org/ematipico/react-multi-labels/dev-status.svg)](https://david-dm.org/ematipico/react-multi-labels?type=dev)
+[![Coverage Status](https://coveralls.io/repos/github/ematipico/react-multi-labels/badge.svg)](https://coveralls.io/github/ematipico/react-multi-labels)
 
 Provide static labels to your application, whichever language you want
 
