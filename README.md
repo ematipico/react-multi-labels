@@ -1,6 +1,7 @@
 # React multi labels
 
 [![Build Status](https://travis-ci.org/ematipico/react-multi-labels.svg?branch=master)](https://travis-ci.org/ematipico/react-multi-labels)
+[![devDependencies Status](https://david-dm.org/ematipico/react-multi-labels/dev-status.svg)](https://david-dm.org/ematipico/react-multi-labels?type=dev)
 
 Provide static labels to your application, whichever language you want
 
