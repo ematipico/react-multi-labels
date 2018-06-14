@@ -152,6 +152,10 @@ function Form() {
 ### ChangeLabels
 
 ```js
+import { GetLabels, ChangeLabels, LabelsProvider } from 'react-multi-labels';
+import { Button } from './Button';
+import React from 'react';
+
 const LABELS = {
     en_GB: {
         LOGIN: 'Login'
