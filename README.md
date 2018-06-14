@@ -151,6 +151,46 @@ function Form() {
 
 ### ChangeLabels
 
+```js
+const LABELS = {
+    en_GB: {
+        LOGIN: 'Login'
+        EMAIL: 'Email'
+    }
+};
+
+const NEW_LABELS = {
+    en_GB: {
+        LOGIN: 'Fancy Login'
+        EMAIL: 'Fancy Email'
+    }
+};
+
+
+<LabelsProvider language="en_GB" labels={LABELS}>
+  <React.Fragment>
+    <GetLabels list={['LOGIN', 'EMAIL']}>
+      {({ LOGIN, EMAIL }) => {
+        return (
+          <p>
+            {LOGIN} - {EMAIL}
+          </p>
+        );
+      }}
+    </GetLabels>
+    <ChangeLabels>
+      {({ changeLabels }) => {
+        return (
+          <button onClick={() => changeLabels(newLabels)}>
+            Click me!
+          </button>
+        );
+      }}
+    </ChangeLabels>
+  </React.Fragment>
+</LabelsProvider>
+```
+
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fematipico%2Freact-multi-labels.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fematipico%2Freact-multi-labels?ref=badge_large)
