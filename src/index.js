@@ -17,6 +17,7 @@ export class LabelsProvider extends React.Component {
       changeLanguage: this.changeLanguage,
       changeLabels: this.changeLabels
     };
+    /* instanbul ignore if */
     if (isDevelop) {
       if (!labels[language]) {
         console.warn('Careful! There is no object for the language that you just set!');
